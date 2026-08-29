@@ -41,7 +41,7 @@ function printInfo_v4(user){//
     const {age, name} = user  // esta también es otra manera de hacerlo (también podría usar variables "let") pero la idea es desempaqueto los atributos del objeto en constantes o varaibles y luego las uso 
     console.log(age) 
     console.log(name) 
-    return '<h1> hola ' + name + '</h1> <h3> Tu edad es de...: ' + age + '</h3>'  //lo que buscamos aquí es acceder al  atributo del objeto por medio de corcehetes 
+    return '<h1> hola ' + name + '</h1> <h3> Tu edad es de: ' + age + '</h3>'  //lo que buscamos aquí es acceder al  atributo del objeto por medio de corcehetes 
 
 
 }
