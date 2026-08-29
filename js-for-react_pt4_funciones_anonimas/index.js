@@ -32,3 +32,28 @@ console.log(
 // Los tres ejemplos hacen lo mismo, sin embargo solo en el caso 1 la función queda declarada
 // (en los casos 2 y 3 no queda ninguna referencia a la función, así que no se puede volver
 // a llamar sin reescribir el código))
+
+
+// Las funciones anonimas  son más una elección de estilo ( en ocasiones usar una función anonima para una accion en especifica es mucho más legible para entender el funcionamiento del codigo)
+//  Un ejemplo donde puede llegar a ser útil es en los eventos.
+
+const button = document.createElement ('button') // Crear un boton
+button.innerText='Dale click' // insertar texto dentro del boton
+
+button.addEventListener('click',  function  () { // esta funcion genera una alerta de autodestrucción y añado un div con el texto cuando se le hace click al boton
+    alert('autodestruccion iniciada')   // Crea la alerta
+    const objeto_creado= document.createElement("div") //crea el div
+    objeto_creado.innerText = 'AutoDestrucción Iniciada'   //inserta el texto de autodestruccion
+    document.body.append(objeto_creado) // añade el div en el body 
+    
+
+
+}) // añadir evento  click al boton
+
+
+document.body.append(button)
+
+// Como se comento con anterioridad la elección de las funciones anonimas depende del caso de uso.
+// en el caso anterior solo se uso como parametro para crear un texto y una alerta y no se vovlera a usar en ese caso no es necesario crear una referencia (nombrarla). Simplemenete se usa y nunca más se vuelve a llamar.
+// En el caso en el que si se necesitara llamarse en otra parte del codigo entonces si hay que nombrarla (y no usar una funcion anonima)
+
