@@ -34,7 +34,7 @@ console.log(add_V_arrow(2,3))
 // conviene cada una: método de objeto vs callback).
 
 
-// Ejemplode lo anterior 
+// Ejemplo de lo anterior 
 
 
 const add_V2_arrow = (x, y) =>  x +y //  como no necesito el return entonces  puedo omitir las llaves
@@ -42,3 +42,22 @@ const add_V2_arrow = (x, y) =>  x +y //  como no necesito el return entonces  pu
 
 
 console.log(add_V2_arrow(2,3))
+
+
+
+// FUncion de autodestruccion con arrow funcion
+
+const button = document.createElement ('button') // Crear un boton
+button.innerText='Dale click' // insertar texto dentro del boton
+
+button.addEventListener('click',   () => { // esta funcion genera una alerta de autodestrucción y añado un div con el texto cuando se le hace click al boton
+    alert('autodestruccion iniciada')   // Crea la alerta
+    const divNuevo= document.createElement("div") //crea el div
+    divNuevo.innerText = 'AutoDestrucción Iniciada'   //inserta el texto de autodestruccion
+    document.body.append(divNuevo) // añade el div en el body 
+    
+
+
+})
+
+document.body.append(button)
