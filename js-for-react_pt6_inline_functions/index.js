@@ -49,5 +49,8 @@ append_div_con_texto("DIV INSERTADO :D",h1)
 
 append_div_con_texto("DIV INSERTADO") // si se deja vacio toma el ultimo elemento y lo inserta antes
 
+// UN ejemplo más correcto es crear una alerta al h1
+
+h1.addEventListener('click' ,() => alert("autodestrucion iniciada")) // recibe el click y luego lo que hace despues (generar alerta de autodestruccion)
 
 
