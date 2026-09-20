@@ -42,7 +42,7 @@ function añadirbienvenida()  {
     }
 
     const div=document.createElement("div")
-    div.innerText= "Bienvenido usuario de edad:" +edad
+    div.innerHTML= '<h1> hola usuario '  + '</h1> <h3> Tu edad es de: ' + edad + '</h3>'  
     console.log("Bienvenido usuario de edad:" +edad)
     document.body.append(div)
 
