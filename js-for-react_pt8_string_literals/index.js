@@ -1,69 +1,73 @@
-// SECCION RETURN 
-
-// return 200 : esto hace que la ejecucion termine inmediatemente.
-const button = document.createElement ("button")
-
-button.innerText="Click"
-document.body.append(button)
-
-
-const isAutorized = false; // cambiar a true o false para ver el efecto
-
-
-
-button.addEventListener("click", () =>{
-    if (isAutorized ==true) { //tampoco es necesario poner ==true, solo con if isAutorized es suficiente
-
-    return alert("Esta autorizado");
-    }
-    // no es necesario poner el else explicitamente
-    // else {
-    // alert("No esta autorizado");
-    // }
-
-    alert("No esta autorizado") // no es necesario poner el else explicitamente
-
-
-}
-
-
-)
+// === Section String Literals ===
+// Esta es la seccion de un fstring de python 
+// este codigo toma un nombre, crea un elemento div y crea unos checkbox para cambiarle el color al div
 
 const input=document.createElement('input')
-document.body.append(input)
-function añadirbienvenida()  {
-    if(edad <18) {
 
 
 
-        
 
-        return 20
-    }
+function create_div (nombre){
+const div=document.createElement('div')
+div.innerHTML=`<h1>${nombre} </h1> <h2> Presione un check para cambiar de color</h2>` // Esta es la sintaxix del string literals
+document.body.append(div)
 
-    const div=document.createElement("div")
-    div.innerHTML= '<h1> hola usuario '  + '</h1> <h3> Tu edad es de: ' + edad + '</h3>'  
-    console.log("Bienvenido usuario de edad:" +edad)
-    document.body.append(div)
+check1=document.createElement("input")
+check2=document.createElement("input")
+check3=document.createElement("input")
+check1.type="checkbox"
+check2.type="checkbox"
+check3.type="checkbox"
 
+document.body.append(check1)
+document.body.append(check2)
+document.body.append(check3)
+//div.style permite hacer css (se puede escribir como string o usando variables como string literal (o una fstring de python))
+check1.addEventListener("change", () =>{
+
+    const color="blue"
+    div.style=`color:${check1.checked ? color : undefined}` // el '?' actua como un if  ==true y luego van lso dos valores "color") (valor 1) o "undefined" (valor2)
+
+
+})
+check2.addEventListener("change", () =>{
+
+    const color="#07def1ff"
+    div.style=`color:${check2.checked ? color : undefined}` // el '?' actua como un if  ==true y luego van lso dos valores "color") (valor 1) o "undefined" (valor2)
+
+
+})
+
+check3.addEventListener("change", () =>{
+
+    const color="#f1ca07ff"
+    div.style=`color:${check3.checked ? color : undefined}` // el '?' actua como un if  ==true y luego van lso dos valores "color") (valor 1) o "undefined" (valor2)
+
+
+})
+
+
+
+
+
+
+} 
+input.placeholder="Hola Escriba su nombre"
+
+input.addEventListener('change', ()=> {
+const nombre = input.value
+create_div(nombre)
 
 
 }
-let edad= null;
-input.addEventListener("change", ()=>{
-    if (input.value <18){
-    return alert("No Se permiten menores");}
-    
-    const valor=input.value
-    edad=valor
-    
-    
-    
-    return añadirbienvenida(edad)   
 
-}
 
 )
+
+
+
+document.body.append(input)
+//document.body.after(check1)
 
 
 
