@@ -124,6 +124,12 @@ console.log(max_number)
 
 // Otro ejemplo  con string. Contar el numero de letras de cada elemento
 
-const max_letters= names_append.reduce((acumulado,actual) =>acumulado+actual.length, 0 )
+const count_letters= names_append.reduce((acumulado,nombre) =>acumulado+nombre.length, 0 )
 
-console.log(max_letters)
+console.log(count_letters)
+
+// Otro ejemplo  con string. Contar el numero total  de letras que hay en los nombres que tienen "M"
+
+const totalLetrasM= names_append.reduce((acumulado,nombre) =>nombre.toUpperCase().includes("M") ? nombre.length+acumulado:acumulado, 0 )
+
+console.log(totalLetrasM)
