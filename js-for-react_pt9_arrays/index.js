@@ -100,3 +100,16 @@ console.log(names_append)
 
 const numbers_append=numbers.concat(numbers_found)
 console.log(numbers_append)
+
+
+// REDUCE: recorre el array aplicando una función a cada elemento. Lo que retorna cada vuelta
+// se pasa como acumulador a la siguiente. Al final devuelve un solo valor (el último acumulador).
+// arr.reduce((acc, actual) => ..., valorInicial)
+
+// un contador de python es asi:
+// contador = 0           
+// for i in [1, 2, 3, 4]:
+//     contador += i
+// CONTADOR EN JS:
+contador=numbers_append.reduce((acumulado,actual) =>acumulado +actual, 0 )
+console.log(contador)
