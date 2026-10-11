@@ -155,12 +155,15 @@ num_jugadores.textContent=input.value //agrega al texto del output el valor del 
 
 n=Number(input.value) // vuelve el valor del input en numero
 
-jugadores=Array.from({length:n},(_,i)=>`
-<tr>
-<th scope='row' >Jugador_${i+1} </th>
-<td> 3</td>
-</tr>
-`)  //Crea un array de html usando la longitud seleccionada en input
+jugadores=Array.from({length:n},(_,i)=>
+({
+nombre:`Jugador_${i+1}`,
+vidas: Math.floor(Math.random() * 3) + 1,
+nivel: Math.floor(Math.random() * 100) + 1
+
+
+}
+)  )//Crea un array de html usando la longitud seleccionada en input
 
 
 
