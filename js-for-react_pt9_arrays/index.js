@@ -133,3 +133,95 @@ console.log(count_letters)
 const totalLetrasM= names_append.reduce((acumulado,nombre) =>nombre.toUpperCase().includes("M") ? nombre.length+acumulado:acumulado, 0 )
 
 console.log(totalLetrasM)
+
+
+
+// Ejemplo más complejo usando todos los métodos
+
+const div=document.createElement('div') //crear div 
+div.innerHTML="<H1> THE GAME</H1>" // Crear titulo del juego
+
+document.body.append(div) // hacer append de titulo del juego
+
+const div_parametros  =document.createElement('div') //crear div para parametros
+div_parametros.innerHTML="<H2> Seleccione el numero de jugadores</H2> <input type ='range' min='1' max='5'></input> <p> Número Jugadores: <output id ='num_jugadores'></output></p>" // crar slider para numero de jugadores
+
+document.body.append(div_parametros) // se añade al body
+
+const num_jugadores= document.querySelector("#num_jugadores"); //selecciona el elemento con el id (el output de numero de jugadores)
+const input=document.querySelector("input") //selecciona el primer elemento de input
+
+num_jugadores.textContent=input.value //agrega al texto del output el valor del input
+
+n=Number(input.value) // vuelve el valor del input en numero
+
+jugadores=Array.from({length:n},(_,i)=>`
+<tr>
+<th scope='row' >Jugador_${i+1} </th>
+</tr>
+`)  //Crea un array de html usando la longitud seleccionada en input
+
+
+const tabla=document.createElement('table') //crea una tabla
+
+hmtl_tabla=`
+<caption>
+    Jugadores
+</caption>
+<thead>
+    <tr>
+      <th scope="col">Nombre Jugador</th>
+      
+      
+    </tr>
+  </thead>
+  <tbody>
+  ${jugadores}
+     </tbody>
+   </table>
+
+
+`
+//crea una tabla que usa el array creado para poner filas con el nombre de cada jugador
+tabla.innerHTML=hmtl_tabla //le añade hmtl al body
+document.body.append(tabla) //pone el elemento en el body
+
+
+
+input.addEventListener("input", (event) => //crea un listetener que toma como parametro el evento que disparo el listener (es decir el mismo input)
+{ num_jugadores.textContent=event.target.value //toma el valor del evento que disparo el event (el input)
+   n=Number(event.target.value) //actualiza el numero de jugadores y actualiza toda la tabla
+   
+   
+   jugadores=Array.from({length:n},(_,i)=>`
+<tr>
+<th scope='row' >Jugador_${i+1} </th>
+</tr>
+`)  
+
+hmtl_tabla=`
+<caption>
+    Jugadores
+</caption>
+<thead>
+    <tr>
+      <th scope="col">Nombre Jugador</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  ${jugadores}
+     </tbody>
+   </table>
+
+
+`
+tabla.innerHTML=hmtl_tabla
+document.body.append(tabla)
+   
+ 
+
+}
+)
+
+
