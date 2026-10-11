@@ -90,3 +90,13 @@ numbers_found=numbers_division.filter(function(number){ //retorna todos los elem
 )
 
 console.log(numbers_found)
+
+
+ // concat une arrays y devuelve uno nuevo sin modificar el original (como lista1 + lista2 en Python)
+
+
+const names_append=names.concat(names_found)
+console.log(names_append)
+
+const numbers_append=numbers.concat(numbers_found)
+console.log(numbers_append)
