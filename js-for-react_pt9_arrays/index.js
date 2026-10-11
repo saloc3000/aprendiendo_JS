@@ -32,3 +32,9 @@ newNames=names.map(function(name){ // toma el array names, y crea una función q
 )
 
 console.log(newNames) // Esto imprime el array
+
+numbers_division=numbers.map(function(number){
+
+   return number/2
+})
+console.log(numbers_division) 
