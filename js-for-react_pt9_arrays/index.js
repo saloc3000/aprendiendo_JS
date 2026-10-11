@@ -163,20 +163,35 @@ nivel: Math.floor(Math.random() * 100) + 1
 
 
 }
-)  )//Crea un array de html usando la longitud seleccionada en input
+)  )
 
 
 
 const vidas=jugadores.map(function(jugador){ // Traigo las vidas de cada jugador
-      return Number(jugador.split("<td>")[1].split("</td>")[0])
+      return Number(jugador.vidas)
     
    } 
 )
 const vidas_totales= vidas.reduce((vidas_acumuladas, vida_jugador_actual)=>vidas_acumuladas+vida_jugador_actual,0)
 
+const niveles=jugadores.map(function(jugador){ // Traigo las vidas de cada jugador
+      return Number(jugador.nivel)
+    
+   } 
+)
+
+const nivel_promedio= Math.round(niveles.reduce((niveles_acumulados, nivel_jugador_actual)=>niveles_acumulados+nivel_jugador_actual,0)/niveles.length)
 
 
 
+const rows= jugadores.map( jugador => `
+   <tr>
+      <th scope ="row">${jugador.nombre}</th>
+      <td>${jugador.vidas}</td>
+      <td>${jugador.nivel}</td>
+
+   
+   `)
 
 
 
@@ -190,18 +205,22 @@ hmtl_tabla=`
 <thead>
     <tr>
       <th scope="col">Nombre Jugador</th>
-      <th scope="col">Vidas jugador</th>
+      <th scope="col">Vidas Jugador</th>
+      <th scope="col">Nivel Jugador</th>
       
       
     </tr>
   </thead>
   <tbody>
-  ${jugadores}
+  ${rows}
      </tbody>
 <tfoot>
     <tr>
       <th scope="row" colspan="1">Vidas Totales</th>
-      <td>${vidas_totales}</td>
+       <td>${vidas_totales}</td>
+      <th scope="row" colspan="0">nivel promedio</th>
+       <td>${nivel_promedio}</td>
+     
     </tr>
   </tfoot>
 
