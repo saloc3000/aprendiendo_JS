@@ -111,5 +111,12 @@ console.log(numbers_append)
 // for i in [1, 2, 3, 4]:
 //     contador += i
 // CONTADOR EN JS:
-contador=numbers_append.reduce((acumulado,actual) =>acumulado +actual, 0 )
+const contador=numbers_append.reduce((acumulado,actual) =>acumulado +actual, 0 )
 console.log(contador)
+
+// También se puede buscar encontrar el maximo valor dentro de todo el array. UN analogo en python es max(list)
+
+// el -infinity es para que el primer valor encontrado en el array siempre sea el maximo en laprimera vuelta (por ejemplo si tenemos solo numeros negativos y poonemos 0 pues va a quedar 0 como max)
+console.log(numbers_append)
+const max_number= numbers_append.reduce((acumulado,actual) =>Math.max(acumulado, actual), -Infinity )
+console.log(max_number)
