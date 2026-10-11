@@ -158,9 +158,24 @@ n=Number(input.value) // vuelve el valor del input en numero
 jugadores=Array.from({length:n},(_,i)=>`
 <tr>
 <th scope='row' >Jugador_${i+1} </th>
-<td>3</td>
+<td> 3</td>
 </tr>
 `)  //Crea un array de html usando la longitud seleccionada en input
+
+
+
+const vidas=jugadores.map(function(jugador){ // Traigo las vidas de cada jugador
+      return Number(jugador.split("<td>")[1].split("</td>")[0])
+    
+   } 
+)
+
+
+
+
+
+
+
 
 
 const tabla=document.createElement('table') //crea una tabla
@@ -198,8 +213,10 @@ input.addEventListener("input", (event) => //crea un listetener que toma como pa
    jugadores=Array.from({length:n},(_,i)=>`
 <tr>
 <th scope='row' >Jugador_${i+1} </th>
+<td>3</td>
 </tr>
-`)  
+`)  //Crea un array de html usando la longitud seleccionada en input
+
 
 hmtl_tabla=`
 <caption>
@@ -208,6 +225,8 @@ hmtl_tabla=`
 <thead>
     <tr>
       <th scope="col">Nombre Jugador</th>
+      <th scope="col">Vidas jugador</th>
+      
       
     </tr>
   </thead>
@@ -227,3 +246,4 @@ document.body.append(tabla)
 )
 
 
+//
