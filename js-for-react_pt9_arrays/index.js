@@ -64,3 +64,16 @@ number_found=numbers_division.find(function(number){ // Toma el array numbers, r
 )
 
 console.log(number_found)
+
+// El método filter recorre elemento por elemento y guarda en un nuevo array todos los elementos que cumplen la condicion 
+
+names_found=names.filter(function(name){ // toma el array names,y devuelve un array con todos los nombres que cumplen la condicion
+      if (name.startsWith("J") || name.startsWith("M")){
+
+        return name
+      }
+    
+   } 
+)
+
+console.log(names_found)
