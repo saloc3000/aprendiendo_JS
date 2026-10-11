@@ -23,3 +23,12 @@ numbers.forEach(function(number){
 
     console.log(number/2)
 })
+
+/// Otro metodo bastante usado es map que toma un array y devuelve otro nuevo array
+
+
+newNames=names.map(function(name){ // toma el array names, y crea una función que toma como parametro cada elemento del array uno a uno y le aplica la funcion
+      return `${name} nuevo`}
+)
+
+console.log(newNames) // Esto imprime el array
