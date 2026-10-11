@@ -171,6 +171,7 @@ hmtl_tabla=`
 <thead>
     <tr>
       <th scope="col">Nombre Jugador</th>
+      <th scope="col">Vidas jugador</th>
       
       
     </tr>
