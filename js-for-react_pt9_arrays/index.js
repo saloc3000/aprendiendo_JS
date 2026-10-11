@@ -158,6 +158,7 @@ n=Number(input.value) // vuelve el valor del input en numero
 jugadores=Array.from({length:n},(_,i)=>`
 <tr>
 <th scope='row' >Jugador_${i+1} </th>
+<td>3</td>
 </tr>
 `)  //Crea un array de html usando la longitud seleccionada en input
 
