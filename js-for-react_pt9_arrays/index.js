@@ -120,3 +120,10 @@ console.log(contador)
 console.log(numbers_append)
 const max_number= numbers_append.reduce((acumulado,actual) =>Math.max(acumulado, actual), -Infinity )
 console.log(max_number)
+
+
+// Otro ejemplo  con string. Contar el numero de letras de cada elemento
+
+const max_letters= names_append.reduce((acumulado,actual) =>acumulado+actual.length, 0 )
+
+console.log(max_letters)
