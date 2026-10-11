@@ -77,3 +77,16 @@ names_found=names.filter(function(name){ // toma el array names,y devuelve un ar
 )
 
 console.log(names_found)
+
+
+
+numbers_found=numbers_division.filter(function(number){ //retorna todos los elementos que son enteros
+      if (Number.isInteger(number)){
+
+        return number
+      }
+    
+   } 
+)
+
+console.log(numbers_found)
