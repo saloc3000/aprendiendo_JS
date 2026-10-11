@@ -200,7 +200,7 @@ const rows= jugadores.map( jugador => `
       <td>${jugador.nivel}</td>
 
    
-   `)
+   `).join("")
 
 
 
@@ -285,7 +285,7 @@ const rows= jugadores.map( jugador => `
       <td>${jugador.nivel}</td>
 
    
-   `)
+   `).join("")
 
 hmtl_tabla=`
 <caption>
@@ -321,7 +321,7 @@ hmtl_tabla=`
 const max_nivel= Math.round(niveles.reduce((niveles_acumulados, nivel_jugador_actual)=>Math.max(niveles_acumulados,nivel_jugador_actual,0)))
 
 const max_player_name= jugadores.find(jugador => jugador.nivel === max_nivel)?.nombre
-const second_player_name=jugadores.filter(jugador => jugador.nombre!== max_player_name).toSorted((a,b)=>b.nivel- a.nivel)[0].nombre//
+const second_player_name=jugadores.filter(jugador => jugador.nombre!== max_player_name).toSorted((a,b)=>b.nivel- a.nivel)[0]?.nombre//
 
 
 //crea una tabla que usa el array creado para poner filas con el nombre de cada jugador
