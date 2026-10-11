@@ -16,3 +16,10 @@ for (let i = 0; i < names.length; i++) {
 names.forEach(function(name){ // toma el array names, y crea una función que toma como parametro cada elemento del array uno a uno y le aplica la funcion
         console.log(name)}
 )
+
+const numbers =[2,3,4,5,10]
+
+numbers.forEach(function(number){
+
+    console.log(number/2)
+})
