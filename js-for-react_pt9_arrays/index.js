@@ -181,6 +181,15 @@ const niveles=jugadores.map(function(jugador){ // Traigo las vidas de cada jugad
 )
 
 const nivel_promedio= Math.round(niveles.reduce((niveles_acumulados, nivel_jugador_actual)=>niveles_acumulados+nivel_jugador_actual,0)/niveles.length)
+const max_nivel= Math.round(niveles.reduce((niveles_acumulados, nivel_jugador_actual)=>Math.max(niveles_acumulados,nivel_jugador_actual,0)))
+
+
+const max_player_name= jugadores.find(jugador => jugador.nivel === max_nivel)?.nombre
+const second_player_name=jugadores.filter(jugador => jugador.nombre!== max_player_name).toSorted((a,b)=>b.nivel- a.nivel)[0].nombre//filtra el nombre del jugador maximo, ordena de mayor a menor nivel dentro del nuevo array y selecciona el primer elemento para obtener el nombre del segundo jugador
+
+const div_ranking=document.createElement('div')
+div_ranking.innerHTML=`<H3> El mejor jugador es ${max_player_name} </H3><H4> El segundo mejor es ${second_player_name}</H4>`
+
 
 
 
@@ -232,28 +241,51 @@ hmtl_tabla=`
 //crea una tabla que usa el array creado para poner filas con el nombre de cada jugador
 tabla.innerHTML=hmtl_tabla //le añade hmtl al body
 document.body.append(tabla) //pone el elemento en el body
+document.body.append(div_ranking)
 
-
-
+// ==== LIESTENER SECTION =====
 input.addEventListener("input", (event) => //crea un listetener que toma como parametro el evento que disparo el listener (es decir el mismo input)
 { num_jugadores.textContent=event.target.value //toma el valor del evento que disparo el event (el input)
    n=Number(event.target.value) //actualiza el numero de jugadores y actualiza toda la tabla
    
    
-   jugadores=Array.from({length:n},(_,i)=>`
-<tr>
-<th scope='row' >Jugador_${i+1} </th>
-<td>3</td>
-</tr>
-`)  //Crea un array de html usando la longitud seleccionada en input
+   
+jugadores=Array.from({length:n},(_,i)=>
+({
+nombre:`Jugador_${i+1}`,
+vidas: Math.floor(Math.random() * 3) + 1,
+nivel: Math.floor(Math.random() * 100) + 1
+
+
+}
+)  )
 
 
 const vidas=jugadores.map(function(jugador){ // Traigo las vidas de cada jugador
-      return Number(jugador.split("<td>")[1].split("</td>")[0])
+      return Number(jugador.vidas)
     
    } 
 )
 const vidas_totales= vidas.reduce((vidas_acumuladas, vida_jugador_actual)=>vidas_acumuladas+vida_jugador_actual,0)
+
+const niveles=jugadores.map(function(jugador){ // Traigo las vidas de cada jugador
+      return Number(jugador.nivel)
+    
+   } 
+)
+
+const nivel_promedio= Math.round(niveles.reduce((niveles_acumulados, nivel_jugador_actual)=>niveles_acumulados+nivel_jugador_actual,0)/niveles.length)
+
+
+
+const rows= jugadores.map( jugador => `
+   <tr>
+      <th scope ="row">${jugador.nombre}</th>
+      <td>${jugador.vidas}</td>
+      <td>${jugador.nivel}</td>
+
+   
+   `)
 
 hmtl_tabla=`
 <caption>
@@ -262,18 +294,22 @@ hmtl_tabla=`
 <thead>
     <tr>
       <th scope="col">Nombre Jugador</th>
-      <th scope="col">Vidas jugador</th>
+      <th scope="col">Vidas Jugador</th>
+      <th scope="col">Nivel Jugador</th>
       
       
     </tr>
   </thead>
   <tbody>
-  ${jugadores}
+  ${rows}
      </tbody>
 <tfoot>
     <tr>
       <th scope="row" colspan="1">Vidas Totales</th>
-      <td>${vidas_totales}</td>
+       <td>${vidas_totales}</td>
+      <th scope="row" colspan="0">nivel promedio</th>
+       <td>${nivel_promedio}</td>
+     
     </tr>
   </tfoot>
 
@@ -282,8 +318,9 @@ hmtl_tabla=`
 
 
 `
-tabla.innerHTML=hmtl_tabla
-document.body.append(tabla)
+//crea una tabla que usa el array creado para poner filas con el nombre de cada jugador
+tabla.innerHTML=hmtl_tabla //le añade hmtl al body
+document.body.append(tabla) 
    
  
 
