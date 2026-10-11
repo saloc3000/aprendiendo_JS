@@ -24,7 +24,7 @@ numbers.forEach(function(number){
     console.log(number/2)
 })
 
-/// Otro metodo bastante usado es map que toma un array y devuelve otro nuevo array
+/// Otro método bastante usado es map que toma un array y devuelve otro nuevo array
 
 
 newNames=names.map(function(name){ // toma el array names, y crea una función que toma como parametro cada elemento del array uno a uno y le aplica la funcion
@@ -38,3 +38,19 @@ numbers_division=numbers.map(function(number){
    return number/2
 })
 console.log(numbers_division) 
+
+
+// El método find recorre elemento por elemento hasta encontrar el primer elemento que cumpla una condición y retorna ese valor o undefined si no lo encuentra
+
+
+name_found=names.find(function(name){ // toma el array names,y devuelve el primer valor encontrado que cumple la condicion
+      if (name.startsWith("J") || name.startsWith("M")){
+
+        return name
+      }
+    
+   } 
+)
+
+console.log(name_found)
+
