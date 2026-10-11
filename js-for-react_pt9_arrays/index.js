@@ -169,7 +169,7 @@ const vidas=jugadores.map(function(jugador){ // Traigo las vidas de cada jugador
     
    } 
 )
-
+const vidas_totales= vidas.reduce((vidas_acumuladas, vida_jugador_actual)=>vidas_acumuladas+vida_jugador_actual,0)
 
 
 
@@ -195,6 +195,14 @@ hmtl_tabla=`
   <tbody>
   ${jugadores}
      </tbody>
+<tfoot>
+    <tr>
+      <th scope="row" colspan="1">Vidas Totales</th>
+      <td>${vidas_totales}</td>
+    </tr>
+  </tfoot>
+
+
    </table>
 
 
@@ -218,6 +226,13 @@ input.addEventListener("input", (event) => //crea un listetener que toma como pa
 `)  //Crea un array de html usando la longitud seleccionada en input
 
 
+const vidas=jugadores.map(function(jugador){ // Traigo las vidas de cada jugador
+      return Number(jugador.split("<td>")[1].split("</td>")[0])
+    
+   } 
+)
+const vidas_totales= vidas.reduce((vidas_acumuladas, vida_jugador_actual)=>vidas_acumuladas+vida_jugador_actual,0)
+
 hmtl_tabla=`
 <caption>
     Jugadores
@@ -233,6 +248,14 @@ hmtl_tabla=`
   <tbody>
   ${jugadores}
      </tbody>
+<tfoot>
+    <tr>
+      <th scope="row" colspan="1">Vidas Totales</th>
+      <td>${vidas_totales}</td>
+    </tr>
+  </tfoot>
+
+
    </table>
 
 
