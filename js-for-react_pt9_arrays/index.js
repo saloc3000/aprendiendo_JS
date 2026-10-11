@@ -54,3 +54,13 @@ name_found=names.find(function(name){ // toma el array names,y devuelve el prime
 
 console.log(name_found)
 
+number_found=numbers_division.find(function(number){ // Toma el array numbers, reccorre elemento por elemento hasta encontrar el primer elemento que es un entero
+      if (Number.isInteger(number)){
+
+        return number
+      }
+    
+   } 
+)
+
+console.log(number_found)
