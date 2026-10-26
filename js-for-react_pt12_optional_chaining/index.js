@@ -1,10 +1,19 @@
-// seccion de ecmascript modules
+// optional chaining: este concepto sirve para manejo de errores cuando queremos leer un objeto de un backend y no existe
 
-// Este concepto permite dividir una aplicacion en varios modulos (por ejemplo dividir una app en varios archivos )
-import {add, multiply,title, user} from './helpers.js'
 
-console.log(add(3,2))
+const person ={
+    name :'ryan',
+    address : {
+        city:'london'
+    }
 
-console.log(multiply)
-console.log(title)
-console.log(user)
+
+
+}
+
+
+
+// por ejemplo consultamos a una api que nos devuelve infomración sobre personas ( el nombre, la edad y la direccion, sin embargo, no siempre trae la edad de una persona)
+console.log(person.age.number)
+// En este ejemplo recibimos un error
+
