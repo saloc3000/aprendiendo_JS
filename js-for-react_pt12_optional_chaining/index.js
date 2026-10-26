@@ -22,3 +22,5 @@ if (person.age ){
    console.log(person.age.number)
 }
 
+// sin embargo en JS tenemos una opción mucho más comoda optional chaining que me trae undefined si no existe 
+console.log(person.age?.number)
