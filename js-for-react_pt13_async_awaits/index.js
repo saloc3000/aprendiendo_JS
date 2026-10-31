@@ -1,4 +1,7 @@
 // sincronia
+// === Crear elemento ul===
+const ul= document.createElement("ul")
+document.body.append(ul)
 
 
 let data=fetch('https://jsonplaceholder.typicode.com/posts') // es una biblioteca del navegador para obtener datos de una peticion
@@ -12,10 +15,16 @@ let data2= fetch('https://jsonplaceholder.typicode.com/posts')
                 const data_json=response.json() //usamos esta funcion para convertir la respuesta a un json
                 .then(function(data_json){ // usamos un nuevo ten para esperar a que terminen de cargar los datos y poder mostrarlos en consola
                     console.log('json construido')
-                    data_json.map(function(row){ // hago un map para hacer print de cada elemento del array
-                        console.log(row)
+                    data_json.map(function(row){ // hago un map para  rellenar la lista
+                       
+                        const row_il=document.createElement("li") // creamos por cada objeto del array una elemento 
+                        row_il.innerText=row.title // usamos solo el atributo titulo para llenar la lista
+                        ul.append(row_il) // rellenamos la lista para cada elmeneto
+                        
+
 
                     })
+                    document.body.append(ul) //  agregamos la nueva lista (rellenada) al cuerpo del html 
 
                     
                 })
