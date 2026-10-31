@@ -1,26 +1,15 @@
-// optional chaining: este concepto sirve para manejo de errores cuando queremos leer un objeto de un backend y no existe
+// sincronia
 
 
-const person ={
-    name :'ryan',
-    address : {
-        city:'london'
-    }
+let data=fetch('https://jsonplaceholder.typicode.com/posts') // es una biblioteca del navegador para obtener datos de una peticion
+console.log(data)  // el console log va atraer un "Promise" porque el navegador esta cargando lso datos de manera asincronica (el usuario o navegador puede seguir haciendo funciones pueden seguir funcionand)
 
+let data2= fetch('https://jsonplaceholder.typicode.com/posts')
+        .then( //este then  (entonces) da la instrución que una vez acabe el fecth se hace la logica siguiente
+            function(){
+                console.log("termino de cargar")
 
+            }
+        )
 
-}
-
-
-
-// por ejemplo consultamos a una api que nos devuelve infomración sobre personas ( el nombre, la edad y la direccion, sin embargo, no siempre trae la edad de una persona)
-//console.log(person.age.number) En este ejemplo recibimos un error
-
-// podemos hacer un if para evitarlo  (si existe age me trae el valor numero de lo contrario no me trae nada y no falla)
-
-if (person.age ){
-   console.log(person.age.number)
-}
-
-// sin embargo en JS tenemos una opción mucho más comoda optional chaining que me trae undefined si no existe 
-console.log(person.age?.number)
+console.log("Todo el codigo se ejecuta al tiempo (asincrono), lo que acabe primero es lo primero que se muestra")
