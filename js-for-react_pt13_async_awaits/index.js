@@ -11,7 +11,13 @@ let data2= fetch('https://jsonplaceholder.typicode.com/posts')
                 console.log('Datos recibidos')
                 const data_json=response.json() //usamos esta funcion para convertir la respuesta a un json
                 .then(function(data_json){ // usamos un nuevo ten para esperar a que terminen de cargar los datos y poder mostrarlos en consola
-                    console.log(data_json)
+                    console.log('json construido')
+                    data_json.map(function(row){ // hago un map para hacer print de cada elemento del array
+                        console.log(row)
+
+                    })
+
+                    
                 })
                 
                 //console.log(data_json)  los datos aún se estan convirtiendo a JSON debemos esperar a que termine para poder mostrarlos
