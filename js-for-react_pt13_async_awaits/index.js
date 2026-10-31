@@ -6,8 +6,10 @@ console.log(data)  // el console log va atraer un "Promise" porque el navegador 
 
 let data2= fetch('https://jsonplaceholder.typicode.com/posts')
         .then( //este then  (entonces) da la instrución que una vez acabe el fecth se hace la logica siguiente
-            function(){
-                console.log("termino de cargar")
+            function( response){
+                console.log('Termino de cargar los datos son:')
+                console.log(response)
+                
 
             }
         )
