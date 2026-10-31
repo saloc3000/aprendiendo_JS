@@ -7,10 +7,14 @@ console.log(data)  // el console log va atraer un "Promise" porque el navegador 
 let data2= fetch('https://jsonplaceholder.typicode.com/posts')
         .then( //este then  (entonces) da la instrución que una vez acabe el fecth se hace la logica siguiente
             function( response){
-
-                data_json=response.json() //usamos esta funcion para convertir la respuesta a un json
-                console.log('Termino de cargar los datos son:')
-                console.log(data_json)
+                
+                console.log('Datos recibidos')
+                const data_json=response.json() //usamos esta funcion para convertir la respuesta a un json
+                .then(function(data_json){ // usamos un nuevo ten para esperar a que terminen de cargar los datos y poder mostrarlos en consola
+                    console.log(data_json)
+                })
+                
+                //console.log(data_json)  los datos aún se estan convirtiendo a JSON debemos esperar a que termine para poder mostrarlos
                 
 
             }
