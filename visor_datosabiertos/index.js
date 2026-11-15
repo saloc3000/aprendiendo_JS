@@ -6,9 +6,18 @@
 
 
 
+const dataset_list={
 
-async function loadData(query){
+   
+     Precipitación:'s54a-sgyg'
+}
 
+
+
+async function loadData(query, dataset_name){
+
+const id_dataset=dataset_list[dataset_name]  
+console.log(id_dataset)
 
 const res = await fetch('https://www.datos.gov.co/api/v3/views/s54a-sgyg/query.json', {
   method: 'POST',
@@ -17,7 +26,7 @@ const res = await fetch('https://www.datos.gov.co/api/v3/views/s54a-sgyg/query.j
     'X-App-Token': 'BHf4MfRsbHQPIesvanSRCDqJN'
   },
   body: JSON.stringify({
-    query: "SELECT *  WHERE fechaobservacion >= '2026-11-13' limit 100"
+    query: "SELECT *  WHERE fechaobservacion >= '2026-11-13' limit 1"
   })
 });
 
