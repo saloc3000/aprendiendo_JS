@@ -9,7 +9,9 @@
 const dataset_list={
 
    
-     Precipitación:'s54a-sgyg'
+     Precipitación:'s54a-sgyg',
+
+     Departamento: '82di-kkh9'
 }
 
 
@@ -40,7 +42,6 @@ return data
 
 const query="SELECT *  WHERE fechaobservacion >= '2026-11-13' limit 100"
 
-
-const datos= await loadData(query,"Precipitación")
-
-console.log(datos)
+const query_dep="SELECT distinct dpto"
+const data= await loadData(query,"Precipitación")
+const DEP = await loadData(query_dep,"Departamento")//TODO agregar https://dev.socrata.com/foundry/www.datos.gov.co/82di-kkh9
