@@ -53,12 +53,17 @@ const DEP = await loadData(query_dep,"Departamento")//
 
 const deps= DEP.map(function(departamento){
     console.log(departamento)
-    return Object.values(departamento)[0]
+    return  `<input type="checkbox" name="depto" value="${Object.values(departamento)[0]}">${Object.values(departamento)[0]}</label>`
 
 })
 console.log(deps)
 //=== selectores ===
 
+const div= document.createElement("div")
+
+
+div.innerHTML=`<H1>Seleccione los Departamentos</H1><H2>${deps}</H2>`
+document.body.append(div)
 
 
 
