@@ -1,48 +1,27 @@
-/// Proyecto: Crear visualizador de datos abiertos en navegador:
+// seccion de ecmascript modules
+
+// Este concepto permite dividir una aplicacion en varios modulos (por ejemplo dividir una app en varios archivos )
 
 
+export function add (a,b) {
 
-// 1 ) Precipitaciones:  link: https://dev.socrata.com/foundry/www.datos.gov.co/s54a-sgyg
-
-
-
-const dataset_list={
-
-   
-     Precipitación:'s54a-sgyg',
-
-     Departamento: '82di-kkh9'
+    return a+b
 }
 
 
 
-async function loadData(QUERY="select * limit 1", dataset_name="Precipitación"){
+export function multiply (a,b) {
 
-const id_dataset=dataset_list[dataset_name]   //busca el nombre del id
-
-const res = await fetch(`https://www.datos.gov.co/api/v3/views/${id_dataset}/query.json`, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'X-App-Token': 'BHf4MfRsbHQPIesvanSRCDqJN'
-  },
-  body: JSON.stringify({
-    query: QUERY
-  })
-})
-
-
-const data= await res.json()
-
-
-return data
+    return a*b
 }
 
 
 
-const query="SELECT *  WHERE fechaobservacion >= '2026-11-13' limit 100"
+export const title= "TITULO DE EJEMPLO" //también me permite exportar constantes
 
-const query_dep="SELECT distinct dpto" //TODO: leer de carpeta'queries'
+export const user = {name:'molly',
+    last_name:'alfonsina'
+} //puedo expotar objetos o arrays
 
-const data= await loadData(query,"Precipitación")
-const DEP = await loadData(query_dep,"Departamento")//TODO agregar https://dev.socrata.com/foundry/www.datos.gov.co/82di-kkh9
+
+export default title  // Esta declaración hace que exporte por default title (si en main/ index no se deja de manera explicita que importar)
