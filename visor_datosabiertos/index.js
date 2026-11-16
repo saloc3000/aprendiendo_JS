@@ -74,32 +74,84 @@ div.id='deptos' //añadir identificador para darle estilo
 div.innerHTML=`<H1>Seleccione los Departamentos</H1><H2>${deps}</H2>` // se insertan los departamentos (por defecto esta activo bogotá)
 document.body.append(div) // se añade al body
 
+const contenedor_tabla=document.createElement("div")
+contenedor_tabla.id="resumen"
 
+document.body.append(contenedor_tabla)
 
 
 
 
 async function getDataPrecipitacion (){
+  
+  const data_resumen=[]
+  const deps = [...document.querySelectorAll('input[name="depto"]:checked')].map( i => i.value) 
+  const deps_seleccionados = [...document.querySelectorAll('input[name="depto"]:checked')].map( i => `"${i.value}"`) // se crea un array con la lista de departamentos seleccionados
+  
+  const query=`SELECT *  WHERE fechaobservacion  >= '2026-11-13'and upper(departamento) in (${deps_seleccionados}) ` //se construye la query con los deptos seleccioandos
+  
+  
+  const data= await loadData(query,"Precipitación")
+  
+  for (const dep of deps) {
+    // console.log(dep)
+    const data_dep=data.filter(d =>(d.departamento.toUpperCase())=== dep)
+    const resumen={ 'nombre_departamento':dep,  'valor':data_dep.reduce((total,valorMunicipio)=> total+Number(valorMunicipio.valorobservado),0)} //TODO hacer como objeto(claramento esto es por practicar conceptos posiblemente la mejor manera es hacer la logica dentro de SQL o alguna libreria)
+    data_resumen.push(resumen)
+    // console.log(data_dep)
+    console.log(`${dep} Total de precipitacion es:${resumen}`)
+    }
+  
+  
+  // console.log(data_resumen)
+  // console.log(Object.values(data_resumen)[0])
+
+  const rows=data_resumen.map(row => `
+    
+      <tr>
+      <th scope ="row">${row.nombre_departamento}</th>
+      <td>${row.valor}</td>
+      `
+    ).join("")
+    
+
+  
 
 
-const deps_seleccionados = [...document.querySelectorAll('input[name="depto"]:checked')].map( i => `"${i.value}"`) // se crea un array con la lista de departamentos seleccionados
 
-const query=`SELECT *  WHERE fechaobservacion  >= '2026-11-13'and upper(departamento) in (${deps_seleccionados}) limit 100` //se construye la query con los deptos seleccioandos
+  
+  contenedor_tabla.innerHTML=`
+    <h2>Tabla Resumen Por Departamento</h2>
+  <table>
+    <caption>DEPARTAMENTOS</caption>
+    <thead>
+      <tr>
+        <th scope="col">Nombre Departamento</th>
+        <th scope="col">Total de Precipitación</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${rows}
+    </tbody>
+  </table>
+  
+  ` 
+  
 
 
-const data= await loadData(query,"Precipitación")
-return data} //carga la data 
+  
+  
+  
 
 
+  return {data}} //carga la data 
+
+const data = await getDataPrecipitacion()
 
 // Se crea un eventListener para que implemenete los cambios en los departamentos seleccionados
 addEventListener('change', async () => {
-    const   data= await getDataPrecipitacion()
-    console.log(data)
-   
-    
-    
-    
+    const   {data}= await getDataPrecipitacion()
+        
 
 
 })
