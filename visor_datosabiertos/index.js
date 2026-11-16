@@ -77,26 +77,26 @@ document.body.append(div) // se añade al body
 
 
 
+
+
+async function getDataPrecipitacion (){
+
+
 const deps_seleccionados = [...document.querySelectorAll('input[name="depto"]:checked')].map( i => `"${i.value}"`) // se crea un array con la lista de departamentos seleccionados
 
 const query=`SELECT *  WHERE fechaobservacion  >= '2026-11-13'and upper(departamento) in (${deps_seleccionados}) limit 100` //se construye la query con los deptos seleccioandos
 
 
-const data= await loadData(query,"Precipitación") //carga la data 
+const data= await loadData(query,"Precipitación")
+return data} //carga la data 
 
 
 
 // Se crea un eventListener para que implemenete los cambios en los departamentos seleccionados
 addEventListener('change', async () => {
-    
-    const deps_seleccionados = [...document.querySelectorAll('input[name="depto"]:checked')].map( i => `"${i.value}"`)
-    
-    const query=`SELECT *  WHERE fechaobservacion  >= '2026-11-13'and upper(departamento) in (${deps_seleccionados}) limit 100` //se construye la query con los deptos seleccioandos
-
-    console.log(query)
-    const data= await loadData(query,"Precipitación") //carga la data 
-    console.log(deps_seleccionados)
+    const   data= await getDataPrecipitacion()
     console.log(data)
+   
     
     
     
