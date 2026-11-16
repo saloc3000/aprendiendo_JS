@@ -2,3 +2,40 @@ body {
     background:#202020; 
     color:white;
 }
+/* contenedor: chips en filas que se acomodan solos */
+#deptos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* cada label se ve como una pastilla */
+#deptos label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid #555;
+  border-radius: 999px;
+  font: 14px system-ui, sans-serif;
+  color: #ddd;
+  cursor: pointer;
+  user-select: none;
+  transition: background .15s, border-color .15s;
+}
+
+#deptos label:hover {
+  border-color: #888;
+}
+
+/* color del checkbox nativo */
+#deptos input {
+  accent-color: #4f9cf9;
+}
+
+/* estilo del chip cuando su checkbox está marcado */
+#deptos label:has(input:checked) {
+  background: #1e3a5f;
+  border-color: #4f9cf9;
+  color: #fff;
+}

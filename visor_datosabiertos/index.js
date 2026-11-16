@@ -69,7 +69,7 @@ const deps = DEP.map(function (departamento) {
 
 
 const div= document.createElement("div") //crear div
-
+div.id='deptos' //añadir identificador para darle estilo
 
 div.innerHTML=`<H1>Seleccione los Departamentos</H1><H2>${deps}</H2>` // se insertan los departamentos (por defecto esta activo bogotá)
 document.body.append(div) // se añade al body
